@@ -1,0 +1,61 @@
+
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+  <!-- Main Site -->
+  <main id="site-main">
+    <div class="container">
+        <div class="box-nav d-flex justify-between">
+           <div class="filter">
+               <a href="/ibare"><i class="fas fa-angle-double-left"></i> Tüm İbareler</a>
+           </div>
+        </div>
+        <div class="form-title text-center">
+            <h2 class="text-dark">İbareyi Güncelle</h2>
+            <span class="text-light">Formu kullanarak ibareyi düzenleyin</span>
+        </div>
+
+        <!-- add ibare form -->
+         <!-- form handling -->
+ <form method="POST" id="update_ibare">
+    <div class="new_user">
+        <div class="form-group">
+            <label for="sayfa" class="text-light">Sayfa:</label>
+            <input type="hidden" name="id" value="<%= ibareler._id %>">
+            <input type="Number" name="sayfa" value="<%= ibareler.sayfa %>" placeholder="35">
+        </div>
+		<div class="form-group">
+            <label for="kitapAdi" class="text-light">Kitap:</label>
+            <input type="text" name="kitapAdi" value="<%= ibareler.kitapAdi %>" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="ibareMetni" class="text-light">İbare:</label>
+            <input type="text" name="ibareMetni" value="<%= ibareler.ibareMetni %>" placeholder="">
+        </div>
+		<div class="form-group">
+            <label for="terkipSoru" class="text-light">Terkip Soru:</label>
+            <input type="text" name="terkipSoru" value="<%= ibareler.terkipSoru %>" placeholder="">
+        </div>
+		<div class="form-group">
+            <label for="kelimeSoru" class="text-light">Kelime Soru:</label>
+            <input type="text" name="kelimeSoru" value="<%= ibareler.kelimeSoru %>" placeholder="">
+        </div>
+        
+
+       
+
+        <div class="form-group">
+            <button type="submit" class="btn text-dark update">Kaydet</button>
+        </div>
+
+    </div>
+</form>
+       
+    </div>
+</main>
+<!-- /Main Site -->
+
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->

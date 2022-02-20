@@ -1,0 +1,29 @@
+ <!-- form handling -->
+ <form action="/api/users" method="POST" id="add_user">
+    <div class="new_user">
+	
+        <div class="form-group">
+            <label for="name" class="text-light">Kullanıcı Adı</label>
+            <input type="hidden" name="id" value="">
+            <input type="text" name="userName" value="" placeholder="ali.veli">
+        </div>
+		
+        <div class="form-group">
+            <label for="password" class="text-light">Şifre</label>
+            <input type="text" name="password" value="" placeholder="safahat13">
+        </div>
+		
+		<div class="form-group">
+            <label for="yurt" class="text-light">Yurt</label>
+            <input type="text" name="yurt" value="" placeholder="Kartaltepe">
+        </div>
+        
+
+        
+
+        <div class="form-group">
+            <button type="submit" class="btn text-dark update">Kaydet</button>
+        </div>
+
+    </div>
+</form>
