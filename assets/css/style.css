@@ -162,7 +162,8 @@ table{
 #add_user .form-group input[type="text"],
 #update_ibare .form-group input[type="text"],
 #update_ibare .form-group input[type="Number"],
-#add_ibare .form-group input[type="text"]{
+#add_ibare .form-group input[type="text"],
+#add_ibare .form-group input[type="Number"]{
     width: 100%;
     padding: .6em 1em;
     margin: .5em 0;
@@ -171,6 +172,8 @@ table{
     font-size: 1em;
     border-radius: .2em;
 }
+
+
 
 #update_user .form-group .radio,
 #add_user .form-group .radio,
@@ -232,6 +235,29 @@ table{
     cursor: pointer;
     border-radius: .2em;
     margin: .5em 0;
+}
+#kelimeSoruEkle, 
+
+#kelimeSoruEkle, 
+#kelimeSoruKaldir, 
+#terkipSoruEkle, 
+#terkipSoruKaldir{ 
+	width: 10%;
+    padding: .3em 0.5em;
+    
+    border: none;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: .2em;
+    margin: .5em 0;
+}
+#kelimeSoruEkle:hover, 
+#kelimeSoruKaldir:hover, 
+#terkipSoruEkle:hover, 
+#terkipSoruKaldir:hover{
+	background-color: var(--dark);
+    color: var(--border);
 }
 
 #update_user .form-group .btn:hover,

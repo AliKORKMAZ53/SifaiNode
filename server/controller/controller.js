@@ -16,8 +16,25 @@ exports.createIbare = (req,res)=>{
         sayfa : req.body.sayfa,
         ibareMetni : req.body.ibareMetni
     })
-	ibare.terkipSoru.push(req.body.terkipSoru);
-	ibare.kelimeSoru.push(req.body.kelimeSoru);
+	
+	if(Array.isArray(req.body.terkipSoru)){
+		ibare.terkipSoru=req.body.terkipSoru;
+	}else if(typeof req.body.terkipSoru == 'string'){
+		ibare.terkipSoru.push(req.body.terkipSoru);
+	}else{
+	res.status(500).send({ message: "terkipSoru type error" });
+	}
+	
+	
+	if(Array.isArray(req.body.kelimeSoru)){
+		ibare.kelimeSoru=req.body.kelimeSoru;
+	}else if(typeof req.body.kelimeSoru == 'string'){
+		ibare.kelimeSoru.push(req.body.kelimeSoru);
+	}else{
+	res.status(500).send({ message: "kelimeSoru type error" });
+	}
+	
+	
 
         
     // save user in the database

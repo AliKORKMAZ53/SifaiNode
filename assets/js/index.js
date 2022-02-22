@@ -1,4 +1,19 @@
+$("#terkipSoruEkle").click(function() {
+    $("#terkipSoruDiv").clone(true).insertBefore("#kelimeSoruDiv");
+    return false;
+});
 
+$("#terkipSoruKaldir").click(function() {
+    $(this).parent().remove();
+});
+$("#kelimeSoruEkle").click(function() {
+    $("#kelimeSoruDiv").clone(true).insertBefore("#kitapAdiDiv");
+    return false;
+});
+
+$("#kelimeSoruKaldir").click(function() {
+    $(this).parent().remove();
+});
 
 
 $("#add_user").submit(function(event){
