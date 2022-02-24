@@ -1,17 +1,19 @@
 $("#terkipSoruEkle").click(function() {
-    $("#terkipSoruDiv").clone(true).insertBefore("#kelimeSoruDiv");
+    $("#terkipSoruDiv").clone(true, true).insertBefore("#kelimeSoruDiv");
     return false;
 });
 
-$("#terkipSoruKaldir").click(function() {
+$(".tersorkal").on('click' ,function() {
+	$(this).parent().children().last().val('');
     $(this).parent().remove();
 });
 $("#kelimeSoruEkle").click(function() {
-    $("#kelimeSoruDiv").clone(true).insertBefore("#kitapAdiDiv");
+    $("#kelimeSoruDiv").clone(true, true).insertBefore("#kitapAdiDiv");
     return false;
 });
 
-$("#kelimeSoruKaldir").click(function() {
+$(".kelsorkal").on('click', function() {
+	$(this).parent().children().last().val('');
     $(this).parent().remove();
 });
 
@@ -43,16 +45,20 @@ $("#update_user").submit(function(event){
 
 })
 //THIS PART WILL BE CHANGED
+/*
 $("#update_ibare").submit(function(event){
     event.preventDefault();
-
+	
     var unindexed_array = $(this).serializeArray();
     var data = {}
 
+	
     $.map(unindexed_array, function(n, i){
-        data[n['name']] = n['value']
+		
+		data[n['name']] = n['value']   
     })
 
+	console.log(data);
 
     var request = {
         "url" : `http://localhost:3000/api/ibare/${data.id}`,
@@ -65,6 +71,7 @@ $("#update_ibare").submit(function(event){
     })
 
 })
+*/
 
 
 if(window.location.pathname == "/"){

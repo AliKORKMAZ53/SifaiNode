@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const morgan = require('morgan');
+//const morgan = require('morgan');
+const winston = require('winston');
 const bodyparser = require("body-parser");
 const path = require('path');
 
@@ -11,8 +12,19 @@ const app = express();
 dotenv.config( { path : 'config.env'} )
 const PORT = process.env.PORT || 8080
 
+
+
 // log requests
-app.use(morgan('tiny'));
+/*
+app.use(morgan(':method :url :status :res[header] - :response-time ms :postData'));
+
+morgan.token('postData', (request) => {
+  if (request.method == 'POST' || request.method == 'PUT') return ' ' + JSON.stringify(request.body);
+  else return ' ';
+});
+*/
+
+//morgan.token('response-body', (req, res) => {return JSON.stringify(req.body)});
 
 // mongodb connection
 connectDB();

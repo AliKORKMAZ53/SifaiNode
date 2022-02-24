@@ -1,6 +1,8 @@
 var Userdb = require('../model/user');
 var ibaredb= require('../model/ibare');
+
 var malumatdb= require('../model/malumatSoru');
+var {logger} = require('./log');
 
 // create and save new ibare
 exports.createIbare = (req,res)=>{
@@ -52,6 +54,33 @@ exports.createIbare = (req,res)=>{
 
 }
 
+// Update a new idetified user by user id
+exports.updateIbare = (req, res)=>{
+    if(!req.body){
+        return res
+            .status(400)
+            .send({ message : "Data to update can not be empty"})
+    }
+
+	console.log(req.body);
+    const id = req.params.id;
+	
+	
+    ibaredb.findByIdAndUpdate(id, req.body, { useFindAndModify: false})
+        .then(data => {
+            if(!data){
+                res.status(404).send({ message : `Cannot Update ibare with ${id}. Maybe ibare not found!`})
+            }else{
+              
+				res.send('<b> Başarılı </p> <hr> <a href="/ibare"><i class="fas fa-angle-double-left"></i> Tüm İbarelere Dön</a>')
+
+            }
+        })
+        .catch(err =>{
+            res.status(500).send({ message : "Error Update ibare information"})
+        })
+}
+
 // retrieve and return all users/ retrive and return a single user
 exports.findIbare = (req, res)=>{
 
@@ -83,29 +112,7 @@ exports.findIbare = (req, res)=>{
     
 }
 
-// Update a new idetified user by user id
-exports.updateIbare = (req, res)=>{
-    if(!req.body){
-        return res
-            .status(400)
-            .send({ message : "Data to update can not be empty"})
-    }
 
-    const id = req.params.id;
-	
-	
-    ibaredb.findByIdAndUpdate(id, req.body, { useFindAndModify: false})
-        .then(data => {
-            if(!data){
-                res.status(404).send({ message : `Cannot Update ibare with ${id}. Maybe ibare not found!`})
-            }else{
-                res.send(data)
-            }
-        })
-        .catch(err =>{
-            res.status(500).send({ message : "Error Update ibare information"})
-        })
-}
 
 // Delete a user with specified user id in the request
 exports.deleteIbare = (req, res)=>{

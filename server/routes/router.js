@@ -38,7 +38,7 @@ route.delete('/api/users/:id', controller.delete);
 // API ibare
 route.post('/api/ibare', controller.createIbare);
 route.get('/api/ibare', controller.findIbare);
-route.put('/api/ibare/:id', controller.updateIbare);
+route.post('/api/ibare/:id', controller.updateIbare);
 route.delete('/api/ibare/:id', controller.deleteIbare);
 
 // API malumat
