@@ -1,6 +1,5 @@
 var Userdb = require('../model/user');
 var ibaredb= require('../model/ibare');
-
 var malumatdb= require('../model/malumatSoru');
 var {logger} = require('./log');
 
@@ -164,10 +163,10 @@ exports.createMalumat = (req,res)=>{
 
 }
 
-// retrieve and return all users/ retrive and return a single user
+
 exports.findMalumat = (req, res)=>{
 
-    if(req.query.id){
+    if(req.query.id){ // REQ QUERY'e kitapAdi eklenebilir
         const id = req.query.id;
 
         malumatdb.findById(id)
@@ -209,7 +208,7 @@ exports.updateMalumat = (req, res)=>{
             if(!data){
                 res.status(404).send({ message : `Cannot Update user with ${id}. Maybe malumat not found!`})
             }else{
-                res.send(data)
+                res.send('<b> Başarılı </p> <hr> <a href="/malumat"><i class="fas fa-angle-double-left"></i> Tüm Malumatlara Dön</a>')
             }
         })
         .catch(err =>{
@@ -239,6 +238,20 @@ exports.deleteMalumat = (req, res)=>{
 }
 //----------------------------------------------------------------
 
+
+// Sort kitaplar from ibare
+exports.findKitap = (req, res)=>{
+
+    ibaredb.collection.aggregate([
+    { $sortByCount: '$kitapAdi' }
+]).toArray()
+      .then(docs => {console.log("all documents", JSON.stringify(docs));
+	  res.send(JSON.stringify(docs));});
+	
+    
+}
+
+//----------------------------------------------------------------
 // create and save new user
 exports.create = (req,res)=>{
     // validate request

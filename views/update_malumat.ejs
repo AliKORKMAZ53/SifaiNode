@@ -1,0 +1,47 @@
+
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+  <!-- Main Site -->
+  <main id="site-main">
+    <div class="container">
+        <div class="box-nav d-flex justify-between">
+           <div class="filter">
+               <a href="/malumat"><i class="fas fa-angle-double-left"></i> Tüm Malumatlar</a>
+           </div>
+        </div>
+        <div class="form-title text-center">
+            <h2 class="text-dark">Malumatı Güncelle</h2>
+            <span class="text-light">Formu kullanarak malumatı düzenleyin</span>
+        </div>
+
+        <!-- add malumat form -->
+         <!-- form handling -->
+ <form action="/api/malumat/<%= malumatlar._id %>" method="POST" id="update_malumat">
+    <div class="new_user">
+        <div class="form-group">
+            <label for="malumatSual" class="text-light">Malumat Soru:</label>
+            <input type="hidden" name="id" value="<%= malumatlar._id %>">
+            <input type="text" name="malumatSual" value="<%= malumatlar.malumatSual %>" placeholder="">
+        </div>
+		
+
+       <div class="form-group" id="kitapAdiDiv">
+            <label for="kitapAdi" class="text-light">Kitap:</label>
+            <input type="text" name="kitapAdi" value="<%= malumatlar.kitapAdi %>" placeholder="">
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn text-dark update">Kaydet</button>
+        </div>
+
+    </div>
+</form>
+    </div>
+</main>
+<!-- /Main Site -->
+
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->

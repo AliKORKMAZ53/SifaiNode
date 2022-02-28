@@ -12,6 +12,8 @@ route.get('/', services.homeRoutes); //before this there will be login page
 
 route.get('/ibare', services.homeIbare);
 
+route.get('/malumat', services.homeMalumat);
+
 /**
  *  @description add users
  *  @method GET /add-user
@@ -20,6 +22,8 @@ route.get('/add-user', services.add_user)
 
 route.get('/add-ibare', services.add_ibare)
 
+route.get('/add-malumat', services.add_malumat)
+
 /**
  *  @description for update user
  *  @method GET /update-user
@@ -27,6 +31,8 @@ route.get('/add-ibare', services.add_ibare)
 route.get('/update-user', services.update_user)
 
 route.get('/update-ibare', services.update_ibare)
+
+route.get('/update-malumat', services.update_malumat)
 
 
 // API user
@@ -44,8 +50,13 @@ route.delete('/api/ibare/:id', controller.deleteIbare);
 // API malumat
 route.post('/api/malumat', controller.createMalumat);
 route.get('/api/malumat', controller.findMalumat);
-route.put('/api/malumat/:id', controller.updateMalumat);
+route.post('/api/malumat/:id', controller.updateMalumat);
 route.delete('/api/malumat/:id', controller.deleteMalumat);
+
+// API kitaplar
+route.get('/api/kitap', controller.findKitap);
+
+
 
 
 

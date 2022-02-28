@@ -25,12 +25,27 @@ exports.homeIbare = (req, res) => {
 	
 }
 
+exports.homeMalumat = (req, res) => {
+	axios.get('http://localhost:3000/api/malumat')
+	.then(function(response){
+		res.render('malumat', { malumatlar : response.data });
+	})
+	.catch(err=>{
+		res.send(err);
+	})
+	
+}
+
 exports.add_user = (req, res) =>{
     res.render('add_user');
 }
 
 exports.add_ibare = (req, res) =>{
     res.render('add_ibare');
+}
+
+exports.add_malumat = (req, res) =>{
+    res.render('add_malumat');
 }
 
 exports.update_user = (req, res) =>{
@@ -47,6 +62,16 @@ exports.update_ibare = (req, res) =>{
     axios.get('http://localhost:3000/api/ibare', { params : { id : req.query.id }})
         .then(function(response){
             res.render("update_ibare", { ibareler : response.data})
+        })
+        .catch(err =>{
+            res.send(err);
+        })
+}
+
+exports.update_malumat = (req, res) =>{
+    axios.get('http://localhost:3000/api/malumat', { params : { id : req.query.id }})
+        .then(function(response){
+            res.render("update_malumat", { malumatlar : response.data})
         })
         .catch(err =>{
             res.send(err);

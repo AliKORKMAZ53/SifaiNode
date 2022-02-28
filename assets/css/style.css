@@ -21,6 +21,7 @@ a {
 .container{
     max-width: 1024px;
     margin: auto;
+	
 }
 
 .nav-brand{
@@ -38,7 +39,7 @@ a {
 }
 
 .text-center{
-    text-align: center;
+    
 }
 
 .border-shadow{
@@ -68,9 +69,13 @@ a {
 #header nav{
     background-color: #06d6a0;
     padding: 1em 0;
-    width: 100%;
+    width: 45%;
+	display:table-cell;
 }
-
+#header nav div div a:hover{
+background-color: var(--dark);
+    color: var(--border);
+}
 #site-main{
     margin-top: 6em;
     font-family: 'Barlow', sans-serif;
@@ -163,7 +168,9 @@ table{
 #update_ibare .form-group input[type="text"],
 #update_ibare .form-group input[type="Number"],
 #add_ibare .form-group input[type="text"],
-#add_ibare .form-group input[type="Number"]{
+#add_ibare .form-group input[type="Number"],
+#add_malumat .form-group input[type="text"],
+#update_malumat .form-group input[type="text"]{
     width: 100%;
     padding: .6em 1em;
     margin: .5em 0;
@@ -225,7 +232,9 @@ table{
 #update_user .form-group .btn,
 #add_user .form-group .btn,
 #update_ibare .form-group .btn,
-#add_ibare .form-group .btn{
+#add_ibare .form-group .btn,
+#add_malumat .form-group .btn,
+#update_malumat .form-group .btn {
     width: 100%;
     padding: .9em 1em;
     background-color:#16db93; 

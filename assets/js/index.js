@@ -113,3 +113,23 @@ if(window.location.pathname == "/ibare"){
 
     })
 }
+
+if(window.location.pathname == "/malumat"){
+    $ondelete = $(".table tbody td a.delete");
+    $ondelete.click(function(){
+        var id = $(this).attr("data-id")
+
+        var request = {
+            "url" : `http://localhost:3000/api/malumat/${id}`,
+            "method" : "DELETE"
+        }
+
+        if(confirm("Do you really want to delete this record?")){
+            $.ajax(request).done(function(response){
+                alert("Data Deleted Successfully!");
+                location.reload();
+            })
+        }
+
+    })
+}
