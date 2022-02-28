@@ -1,21 +1,20 @@
 const axios = require('axios');
-
+const dotenv = require('dotenv');
+dotenv.config( { path : '../config.env'} )
 
 exports.homeRoutes = (req, res) => {
     // Make a get request to /api/users
-    axios.get('http://localhost:3000/api/users')
+    axios.get(`${process.env.URL}/api/users`)
         .then(function(response){
             res.render('index', { users : response.data });
         })
         .catch(err =>{
             res.send(err);
-        })
-
-    
+        }) 
 }
 
 exports.homeIbare = (req, res) => {
-	axios.get('http://localhost:3000/api/ibare')
+	axios.get(`${process.env.URL}/api/ibare`)
 	.then(function(response){
 		res.render('ibare', { ibareler : response.data });
 	})
@@ -26,7 +25,7 @@ exports.homeIbare = (req, res) => {
 }
 
 exports.homeMalumat = (req, res) => {
-	axios.get('http://localhost:3000/api/malumat')
+	axios.get(`${process.env.URL}/api/malumat`)
 	.then(function(response){
 		res.render('malumat', { malumatlar : response.data });
 	})
@@ -49,7 +48,7 @@ exports.add_malumat = (req, res) =>{
 }
 
 exports.update_user = (req, res) =>{
-    axios.get('http://localhost:3000/api/users', { params : { id : req.query.id }})
+    axios.get(`${process.env.URL}/api/users`, { params : { id : req.query.id }})
         .then(function(userdata){
             res.render("update_user", { user : userdata.data})
         })
@@ -59,7 +58,7 @@ exports.update_user = (req, res) =>{
 }
 
 exports.update_ibare = (req, res) =>{
-    axios.get('http://localhost:3000/api/ibare', { params : { id : req.query.id }})
+    axios.get(`${process.env.URL}/api/ibare`, { params : { id : req.query.id }})
         .then(function(response){
             res.render("update_ibare", { ibareler : response.data})
         })
@@ -69,7 +68,7 @@ exports.update_ibare = (req, res) =>{
 }
 
 exports.update_malumat = (req, res) =>{
-    axios.get('http://localhost:3000/api/malumat', { params : { id : req.query.id }})
+    axios.get(`${process.env.URL}/api/malumat`, { params : { id : req.query.id }})
         .then(function(response){
             res.render("update_malumat", { malumatlar : response.data})
         })
