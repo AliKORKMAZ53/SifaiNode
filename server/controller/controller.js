@@ -114,7 +114,7 @@ exports.findIbare = (req, res)=>{
 // random ibare
 exports.randomIbare = (req, res)=>{
 	console.log(req.body);
-    if(req.body.kitapAdi!=null){
+    if(req.body.kitapAdi){
         const kitapadi = req.body.kitapAdi;
 		var randomIbare= ibaredb.collection.aggregate([
     { $match: { kitapAdi: kitapadi } },
