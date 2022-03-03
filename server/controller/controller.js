@@ -120,7 +120,7 @@ exports.randomIbare = async(req, res)=>{
     { $match: { kitapAdi: kitapadi } },
     { $sample: { size: 1 } }
 	]);
-	res.send(randomIbare);
+	await res.send(randomIbare);
         
     }else{
        res.status(500).send({ message : "Bu isimde bir kitap bulunamadi" })
