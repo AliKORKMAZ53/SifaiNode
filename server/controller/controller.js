@@ -112,15 +112,16 @@ exports.findIbare = (req, res)=>{
 }
 
 // random ibare
-exports.randomIbare = async(req, res)=>{
+exports.randomIbare = (req, res)=>{
 	console.log(req.body);
     if(req.body){
         const kitapadi = req.body.kitapAdi;
-		var randomIbare= await ibaredb.collection.aggregate([
+		ibaredb.collection.aggregate([
     { $match: { kitapAdi: kitapadi } },
     { $sample: { size: 1 } }
-	]);
-	await res.send(randomIbare);
+	]).toArray()
+      .then(docs => {console.log("all documents", JSON.stringify(docs));
+	  res.send(JSON.stringify(docs));});
         
     }else{
        res.status(500).send({ message : "Bu isimde bir kitap bulunamadi" })
