@@ -120,8 +120,8 @@ exports.randomIbare = (req, res)=>{
     { $match: { kitapAdi: kitapadi } },
     { $sample: { size: 1 } }
 	]).toArray()
-      .then(docs => {console.log("all documents", JSON.stringify(docs));
-	  res.send(JSON.stringify(docs));});
+      .then(docs => {console.log("all documents", JSON.stringify(docs[0]));
+	  res.send(JSON.stringify(docs[0]));});
         
     }else{
        res.status(500).send({ message : "Bu isimde bir kitap bulunamadi" })
@@ -222,9 +222,10 @@ exports.randomMalumat = (req, res)=>{
 		var randomMalumat= malumatdb.collection.aggregate([
     { $match: { kitapAdi: kitapadi } },
     { $sample: { size: 1 } }
-	]);
-	res.send(randomMalumat);
-        
+	]).toArray()
+      .then(docs => {console.log("all documents", JSON.stringify(docs[0]));
+	  res.send(JSON.stringify(docs[0]));});
+	
     }else{
        res.status(500).send({ message : "Bu isimde bir kitap bulunamadi" })
     }
