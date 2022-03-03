@@ -29,6 +29,7 @@ morgan.token('postData', (request) => {
 // mongodb connection
 connectDB();
 
+app.use(express.json());
 // parse request to body-parser
 app.use(bodyparser.urlencoded({ extended : true}))
 
