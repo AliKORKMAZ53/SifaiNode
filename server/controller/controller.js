@@ -113,7 +113,7 @@ exports.findIbare = (req, res)=>{
 
 // random ibare
 exports.randomIbare = (req, res)=>{
-	console.log(req.body);
+	console.log(JSON.parse(JSON.stringify(req.body)));
     if(req.body){
         const kitapadi = req.body;
 		var randomIbare= ibaredb.collection.aggregate([
