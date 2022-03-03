@@ -44,14 +44,14 @@ route.delete('/api/users/:id', controller.delete);
 // API ibare
 route.post('/api/ibare', controller.createIbare);
 route.get('/api/ibare', controller.findIbare);
-route.get('/api/ibare/random', controller.randomIbare);
+route.post('/api/ibare/random', controller.randomIbare);
 route.post('/api/ibare/:id', controller.updateIbare);
 route.delete('/api/ibare/:id', controller.deleteIbare);
 
 // API malumat
 route.post('/api/malumat', controller.createMalumat);
 route.get('/api/malumat', controller.findMalumat);
-route.get('/api/malumat/random', controller.randomMalumat);
+route.post('/api/malumat/random', controller.randomMalumat);
 route.post('/api/malumat/:id', controller.updateMalumat);
 route.delete('/api/malumat/:id', controller.deleteMalumat);
 

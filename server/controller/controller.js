@@ -113,9 +113,9 @@ exports.findIbare = (req, res)=>{
 
 // random ibare
 exports.randomIbare = (req, res)=>{
-	console.log(JSON.parse(JSON.stringify(req.body)));
+	console.log(req.body);
     if(req.body){
-        const kitapadi = req.body;
+        const kitapadi = req.body.kitapAdi;
 		var randomIbare= ibaredb.collection.aggregate([
     { $match: { kitapAdi: kitapadi } },
     { $sample: { size: 1 } }
@@ -215,9 +215,9 @@ exports.findMalumat = (req, res)=>{
 
 // random malumat
 exports.randomMalumat = (req, res)=>{
-
+	console.log(req.body);
     if(req.body){
-        const kitapadi = req.body;
+        const kitapadi = req.body.kitapAdi;
 		var randomMalumat= malumatdb.collection.aggregate([
     { $match: { kitapAdi: kitapadi } },
     { $sample: { size: 1 } }
