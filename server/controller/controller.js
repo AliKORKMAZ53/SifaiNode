@@ -111,6 +111,25 @@ exports.findIbare = (req, res)=>{
     
 }
 
+// random ibare
+exports.randomIbare = (req, res)=>{
+
+    if(req.params.kitapAdi!=null){
+        const kitapadi = req.params.kitapAdi;
+		var randomIbare= ibaredb.collection.aggregate([
+    { $match: { kitapAdi: kitapadi } },
+    { $sample: { size: 1 } }
+	]);
+	res.send(randomIbare);
+        
+    }else{
+       res.status(500).send({ message : "Bu isimde bir kitap bulunamadi" })
+    }
+
+    
+}
+
+
 
 
 // Delete a user with specified user id in the request
@@ -189,6 +208,24 @@ exports.findMalumat = (req, res)=>{
             .catch(err => {
                 res.status(500).send({ message : err.message || "Error Occurred while retriving user information" })
             })
+    }
+
+    
+}
+
+// random malumat
+exports.randomMalumat = (req, res)=>{
+
+    if(req.params.kitapAdi!=null){
+        const kitapadi = req.params.kitapAdi;
+		var randomMalumat= malumatdb.collection.aggregate([
+    { $match: { kitapAdi: kitapadi } },
+    { $sample: { size: 1 } }
+	]);
+	res.send(randomMalumat);
+        
+    }else{
+       res.status(500).send({ message : "Bu isimde bir kitap bulunamadi" })
     }
 
     
