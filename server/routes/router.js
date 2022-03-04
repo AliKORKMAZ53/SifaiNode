@@ -36,6 +36,7 @@ route.get('/update-malumat', services.update_malumat)
 
 
 // API user
+route.post('/api/users/login', controller.findUnamePassword);
 route.post('/api/users', controller.create);
 route.get('/api/users', controller.find);
 route.put('/api/users/:id', controller.update);

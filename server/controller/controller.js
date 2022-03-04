@@ -352,6 +352,33 @@ exports.find = (req, res)=>{
     
 }
 
+//username and password check
+exports.findUnamePassword = (req, res)=>{
+	if(req.body){
+        const username = req.body.username;
+		const _password = req.body.password;
+   
+        Userdb.findOne({ userName: username, password: _password })
+            .then(data =>{
+                if(!data){
+                    res.status(404).send({ message : err.message || "Kullanıcı adı veya şifre hatalı"})
+                }else{
+                    res.status(200).send({ message : "success" })
+                }
+            })
+            .catch(err =>{
+                res.status(500).send({ message: "Hata oluştu"})
+            })
+
+    }else{
+        
+                res.status(500).send({ message : "Eksik veya hatalı giriş" })
+            
+    }
+
+    
+}
+
 // Update a new idetified user by user id
 exports.update = (req, res)=>{
     if(!req.body){
