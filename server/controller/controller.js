@@ -367,7 +367,7 @@ exports.findUnamePassword = (req, res)=>{
                 }
             })
             .catch(err =>{
-                res.status(500).send({ message: "Hata oluştu"})
+                res.status(500).send({ message: "Kullanıcı adı veya şifre hatalı"})
             })
 
     }else{
