@@ -165,7 +165,8 @@ exports.createMalumat = (req,res)=>{
     // new malumat
     const malumat = new malumatdb({
         kitapAdi : req.body.kitapAdi,
-        malumatSual : req.body.malumatSual
+        malumatSual : req.body.malumatSual,
+		kategori : req.body.kategori
     })
 
     // save user in the database
@@ -219,8 +220,9 @@ exports.randomMalumat = (req, res)=>{
 	console.log(req.body);
     if(req.body){
         const kitapadi = req.body.kitapAdi;
+		const kategori = req.body.kategori;
 		var randomMalumat= malumatdb.collection.aggregate([
-    { $match: { kitapAdi: kitapadi } },
+    { $match: {"$and": [{ kitapAdi: kitapadi}, { kategori: kategori}] } },
     { $sample: { size: 1 } }
 	]).toArray()
       .then(docs => {console.log("all documents", JSON.stringify(docs[0]));
@@ -251,11 +253,21 @@ exports.updateMalumat = (req, res)=>{
             }
         })
         .catch(err =>{
-            res.status(500).send({ message : "Error Update user information"})
+            res.status(500).send({ message : "Error Update user information 2"})
         })
 }
 
-// Delete a malumat with specified user id in the request
+exports.postMalumatKategori = (req, res)=>{
+	const kitapadi = req.body.kitapAdi;
+	malumatdb.collection.aggregate([
+	{ $match: { "kitapAdi" : kitapadi } }
+]).toArray()
+      .then(docs => {console.log("all documents", JSON.stringify(docs));
+	  res.send(JSON.stringify(docs));});
+	
+}
+
+// Delete a malumat with specified malumat id in the request
 exports.deleteMalumat = (req, res)=>{
     const id = req.params.id;
 
@@ -265,13 +277,13 @@ exports.deleteMalumat = (req, res)=>{
                 res.status(404).send({ message : `Cannot Delete with id ${id}. Maybe id is wrong`})
             }else{
                 res.send({
-                    message : "User was deleted successfully!"
+                    message : "Malumat is deleted successfully!"
                 })
             }
         })
         .catch(err =>{
             res.status(500).send({
-                message: "Could not delete User with id=" + id
+                message: "Could not delete Malumat with id=" + id
             });
         });
 }
@@ -367,7 +379,7 @@ exports.findUnamePassword = (req, res)=>{
                 }
             })
             .catch(err =>{
-                res.status(500).send({ message: "Kullanıcı adı veya şifre hatalı"})
+                res.status(500).send({ message: err.msg})
             })
 
     }else{

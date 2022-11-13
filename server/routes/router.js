@@ -56,8 +56,14 @@ route.post('/api/malumat/random', controller.randomMalumat);
 route.post('/api/malumat/:id', controller.updateMalumat);
 route.delete('/api/malumat/:id', controller.deleteMalumat);
 
+// API kategoriler
+route.post('/api/kategori', controller.postMalumatKategori);
+
+
 // API kitaplar
 route.get('/api/kitap', controller.findKitap);
+
+
 
 
 
