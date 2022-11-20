@@ -259,8 +259,33 @@ exports.updateMalumat = (req, res)=>{
 
 exports.postMalumatKategori = (req, res)=>{
 	const kitapadi = req.body.kitapAdi;
+	const kategori = req.body.kategori;
 	malumatdb.collection.aggregate([
-	{ $match: { "kitapAdi" : kitapadi } }
+	{$match: { "kitapAdi" : kitapadi }
+	},
+	{ $sortByCount: "$kategori" } ,
+		{
+        $project:{ // Project documents in this format
+            "kitapAdi" : kitapadi,
+            "kategori" : kategori
+        }
+    }
+
+	
+
+	/*
+	{
+	$group : { "_id" : "kategori" , "count": { "$sum": 1 } }
+	}
+	
+	,
+		{
+        $project:{ // Project documents in this format
+            "kitapAdi" : kitapadi,
+            "kategori" : kategori
+        }
+    }*/
+	
 ]).toArray()
       .then(docs => {console.log("all documents", JSON.stringify(docs));
 	  res.send(JSON.stringify(docs));});
