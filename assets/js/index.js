@@ -34,7 +34,7 @@ $("#update_user").submit(function(event){
 
 
     var request = {
-        "url" : `https://sifai-yonetim.herokuapp.com/api/users/${data.id}`,
+        "url" : `https://sifai-yonetim.oa.r.appspot.com/api/users/${data.id}`,
         "method" : "PUT",
         "data" : data
     } 
@@ -80,7 +80,7 @@ if(window.location.pathname == "/"){
         var id = $(this).attr("data-id")
 
         var request = {
-            "url" : `https://sifai-yonetim.herokuapp.com/api/users/${id}`,
+            "url" : `https://sifai-yonetim.oa.r.appspot.com/api/users/${id}`,
             "method" : "DELETE"
         }
 
@@ -100,7 +100,7 @@ if(window.location.pathname == "/ibare"){
         var id = $(this).attr("data-id")
 
         var request = {
-            "url" : `https://sifai-yonetim.herokuapp.com/api/ibare/${id}`,
+            "url" : `https://sifai-yonetim.oa.r.appspot.com/api/ibare/${id}`,
             "method" : "DELETE"
         }
 
@@ -120,7 +120,7 @@ if(window.location.pathname == "/malumat"){
         var id = $(this).attr("data-id")
 
         var request = {
-            "url" : `https://sifai-yonetim.herokuapp.com/api/malumat/${id}`,
+            "url" : `https://sifai-yonetim.oa.r.appspot.com/api/malumat/${id}`,
             "method" : "DELETE"
         }
 
