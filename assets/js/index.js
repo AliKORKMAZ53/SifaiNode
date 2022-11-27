@@ -120,7 +120,7 @@ if(window.location.pathname == "/malumat"){
         var id = $(this).attr("data-id")
 
         var request = {
-            "url" : `http://localhost:3000/api/malumat/${id}`,
+            "url" : `https://sifai-yonetim.herokuapp.com/api/malumat/${id}`,
             "method" : "DELETE"
         }
 
