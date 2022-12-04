@@ -14,6 +14,8 @@ route.get('/ibare', services.homeIbare);
 
 route.get('/malumat', services.homeMalumat);
 
+
+
 /**
  *  @description add users
  *  @method GET /add-user
@@ -34,6 +36,8 @@ route.get('/update-ibare', services.update_ibare)
 
 route.get('/update-malumat', services.update_malumat)
 
+//API BASE URL
+route.get('/base-url', controller.getBASEURL);
 
 // API user
 route.post('/api/users/login', controller.findUnamePassword);

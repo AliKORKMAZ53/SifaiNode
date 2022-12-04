@@ -1,7 +1,16 @@
 var Userdb = require('../model/user');
 var ibaredb= require('../model/ibare');
 var malumatdb= require('../model/malumatSoru');
+var lastUrldb = require('../model/lastUrl');
 var {logger} = require('./log');
+
+//RETURN BASE URL
+exports.getBASEURL = (req,res)=>{
+		var last_base_url = lastUrldb.collection.find().limit(1).sort({$natural:-1});
+		var urlstring=last_base_url.baseURL;
+			res.send(urlstring);
+}
+
 
 // create and save new ibare
 exports.createIbare = (req,res)=>{
