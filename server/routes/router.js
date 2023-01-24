@@ -36,8 +36,9 @@ route.get('/update-ibare', services.update_ibare)
 
 route.get('/update-malumat', services.update_malumat)
 
-//API BASE URL
+//API BASE URL 
 route.get('/base-url', controller.getBASEURL);
+route.post('/base-url', controller.postBASEURL);
 
 // API user
 route.post('/api/users/login', controller.findUnamePassword);

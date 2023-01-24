@@ -6,9 +6,42 @@ var {logger} = require('./log');
 
 //RETURN BASE URL
 exports.getBASEURL = (req,res)=>{
-		var last_base_url = lastUrldb.collection.find().limit(1).sort({$natural:-1});
-		var urlstring=last_base_url.baseURL;
-			res.send(urlstring);
+		
+		
+		lastUrldb.find()
+            .then(feedback => {
+                res.send(feedback)
+            })
+            .catch(err => {
+                res.status(500).send({ message : err.message || "Error Occurred while retriving url information" })
+            })
+		
+		
+}
+
+//POST BASE URL
+exports.postBASEURL = (req,res)=>{
+		if(!req.body){
+        res.status(400).send({ message : "Content can not be emtpy!"});
+        return;
+		}
+		
+		
+		const baseURL = new lastUrldb({
+        baseURL : req.body.baseURL
+    })
+	
+	baseURL
+        .save(baseURL)
+        .then(data => {
+            res.status(200).send({message: "New url added successfully"}); 
+        })
+        .catch(err =>{
+            res.status(500).send({
+                message : err.message || "Some error occurred while creating a URL"
+            });
+        });
+			
 }
 
 

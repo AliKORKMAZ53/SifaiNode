@@ -34,7 +34,7 @@ $("#update_user").submit(function(event){
 
 
     var request = {
-        "url" : `http://sifaiyonetim-env.eba-i62dva2c.eu-central-1.elasticbeanstalk.com/api/users/${data.id}`,
+        "url" : `https://sifai-app.onrender.com/api/users/${data.id}`,
         "method" : "PUT",
         "data" : data
     } 
@@ -80,7 +80,7 @@ if(window.location.pathname == "/"){
         var id = $(this).attr("data-id")
 
         var request = {
-            "url" : `http://sifaiyonetim-env.eba-i62dva2c.eu-central-1.elasticbeanstalk.com/api/users/${id}`,
+            "url" : `https://sifai-app.onrender.com/api/users/${id}`,
             "method" : "DELETE"
         }
 
@@ -100,7 +100,7 @@ if(window.location.pathname == "/ibare"){
         var id = $(this).attr("data-id")
 
         var request = {
-            "url" : `http://sifaiyonetim-env.eba-i62dva2c.eu-central-1.elasticbeanstalk.com/api/ibare/${id}`,
+            "url" : `https://sifai-app.onrender.com/api/ibare/${id}`,
             "method" : "DELETE"
         }
 
@@ -120,7 +120,7 @@ if(window.location.pathname == "/malumat"){
         var id = $(this).attr("data-id")
 
         var request = {
-            "url" : `http://sifaiyonetim-env.eba-i62dva2c.eu-central-1.elasticbeanstalk.com/api/malumat/${id}`,
+            "url" : `https://sifai-app.onrender.com/api/malumat/${id}`,
             "method" : "DELETE"
         }
 
